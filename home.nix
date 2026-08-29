@@ -60,14 +60,11 @@
   home.username = "bagii";
   home.homeDirectory = "/home/bagii";
   home.stateVersion = "26.05";
+
   home.sessionVariables = {
     USE_LAYER_SHELL = "1";
     UV_PYTHON_DOWNLOADS = "never";
   };
-
-  home.sessionPath = [
-    "${config.home.homeDirectory}/.local/bin"
-  ];
 
   home.packages = with pkgs; [
     kdePackages.kate
