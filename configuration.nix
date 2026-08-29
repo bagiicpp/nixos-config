@@ -168,11 +168,15 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
-
   fonts.fontconfig.enable = true;
 
-  # --- Packages --- 
+  # --- Environment --- 
+
   environment.localBinInPath = true;
+  environment.sessionVariables.NPM_CONFIG_PREFIX = "$HOME/.npm-global";
+  environment.variables.PATH = [ "$HOME/.npm-global/bin" ];
+
+  # --- Packages ---
 
   environment.systemPackages = with pkgs; [
 	vim
