@@ -52,12 +52,6 @@
     enable = true;
     interactiveShellInit = ''
       set -g fish_greeting
-      if test -f /etc/profiles/per-user/bagii/etc/profile.d/hm-session-vars.sh
-	for line in (string match -r '^export \w+=.*' < /etc/profiles/per-user/bagii/etc/profile.d/hm-session-vars.sh)
-	  set -l parts (string split -m1 '=' (string replace 'export ' ''' $line))
-	  set -gx $parts[1] (string trim -c '"' $parts[2])
-	end
-      end
     '';
   };
 
