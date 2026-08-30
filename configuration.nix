@@ -192,7 +192,7 @@
 	zed-editor
 	nodejs
 	bun
-
+	fastfetch
   ]
   ++ [ unstable.fetch ]
   ++ [ inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default ]
