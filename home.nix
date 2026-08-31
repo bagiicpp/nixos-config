@@ -6,6 +6,18 @@
     inputs.vicinae.homeManagerModules.default
   ];
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "image/jpeg" = "qimgv.desktop";
+      "image/png" = "qimgv.desktop";
+      "image/webp" = "qimgv.desktop";
+      "image/gif" = "qimgv.desktop";
+      "image/bmp" = "qimgv.desktop";
+      "image/tiff" = "qimgv.desktop";
+    };
+  };
+
   programs.noctalia = {
     enable = true;
     systemd.enable = true;

@@ -194,10 +194,11 @@
 	bun
 	fastfetch
 	discord
+	qimgv
   ]
   ++ [ unstable.fetch ]
   ++ [ inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default ]
-  ++ [ inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default ];
-
+  ++ [ inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default ]
+  ++ [ inputs.hyprmod.packages.${pkgs.stdenv.hostPlatform.system}.default ];
   system.stateVersion = "26.05";
 }
