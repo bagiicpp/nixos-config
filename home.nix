@@ -15,6 +15,12 @@
       "image/gif" = "qimgv.desktop";
       "image/bmp" = "qimgv.desktop";
       "image/tiff" = "qimgv.desktop";
+
+      "x-scheme-handler/http" = "zen.desktop";
+      "x-scheme-handler/https" = "zen.desktop";
+      "x-scheme-handler/chrome" = "zen.desktop";
+      "text/html" = "zen.desktop";
+      "application/xhtml+xml" = "zen.desktop";
     };
   };
 

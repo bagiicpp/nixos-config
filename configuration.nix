@@ -195,6 +195,7 @@
 	fastfetch
 	discord
 	qimgv
+	desktop-file-utils
   ]
   ++ [ unstable.fetch ]
   ++ [ inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default ]
