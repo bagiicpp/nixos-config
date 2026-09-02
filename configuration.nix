@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, lib, inputs, unstable, ... }:
 
 {
@@ -98,8 +94,18 @@
     variant = "";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+
+  # --- Printing ---
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ 
+      cups-filters
+      gutenprint
+      hplip   
+    ];
+  };
+
+  services.ipp-usb.enable = true;
 
   # --- Audio ---
   services.pulseaudio.enable = false;
@@ -112,16 +118,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # --- Libraries ---
   programs.nix-ld.enable = true;
@@ -147,9 +144,6 @@
 
   # --- Unfree packages ---
   nixpkgs.config.allowUnfree = true;
-
-  # Install firefox.
-  programs.firefox.enable = true;
   virtualisation.docker.enable = true;
 
   nix.settings = {
@@ -176,6 +170,8 @@
   environment.localBinInPath = true;
   environment.sessionVariables.NPM_CONFIG_PREFIX = "$HOME/.npm-global";
   environment.variables.PATH = [ "$HOME/.npm-global/bin" ];
+  environment.etc."xdg/menus/applications.menu".source =
+  "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   # --- Packages ---
 
@@ -198,10 +194,16 @@
 	qimgv
 	desktop-file-utils
 	obsidian
+        kdePackages.print-manager # KDE print manager integration
+        system-config-printer     # Standalone GTK printer GUI (recommended for non-Plasma desktops)
+        cups
   ]
   ++ [ unstable.fetch ]
   ++ [ inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default ]
   ++ [ inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default ]
   ++ [ inputs.hyprmod.packages.${pkgs.stdenv.hostPlatform.system}.default ];
+
+  # --- System Version ---
+
   system.stateVersion = "26.05";
 }
