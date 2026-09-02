@@ -197,6 +197,7 @@
 	discord
 	qimgv
 	desktop-file-utils
+	obsidian
   ]
   ++ [ unstable.fetch ]
   ++ [ inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default ]
