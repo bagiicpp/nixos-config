@@ -90,7 +90,11 @@
     python313
   ];
 
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "bagiicpp";
+    userEmail = "blagojavasilev.b@gmail.com";
+  };
 
   programs.starship = {
     enable = true;
