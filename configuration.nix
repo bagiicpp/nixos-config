@@ -194,9 +194,10 @@
 	qimgv
 	desktop-file-utils
 	obsidian
-        kdePackages.print-manager # KDE print manager integration
-        system-config-printer     # Standalone GTK printer GUI (recommended for non-Plasma desktops)
+        kdePackages.print-manager
+        system-config-printer
         cups
+	playwright-mcp
   ]
   ++ [ unstable.fetch ]
   ++ [ inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default ]
