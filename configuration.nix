@@ -199,6 +199,7 @@
         system-config-printer
         cups
 	playwright-mcp
+	inkscape
   ]
   ++ [ unstable.fetch ]
   ++ [ inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default ]
