@@ -208,7 +208,10 @@
 	playwright-mcp
 	inkscape
   ]
-  ++ [ unstable.fetch ]
+  ++ [ 
+    unstable.fetch
+    unstable.codex
+  ]
   ++ [ inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default ]
   ++ [ inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default ]
   ++ [ inputs.hyprmod.packages.${pkgs.stdenv.hostPlatform.system}.default ];
