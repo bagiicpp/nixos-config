@@ -30,13 +30,20 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # --- Services ---
+
+  services.openvpn.servers.argentina = {
+    config = "config /etc/openvpn/argentina.ovpn";
+    autoStart = false;
+  };
+
   services.xserver.enable = true;
 
-  # --- Display Managers ---
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
   };
+
   services.desktopManager.plasma6.enable = true;
 
   programs.hyprland = {
