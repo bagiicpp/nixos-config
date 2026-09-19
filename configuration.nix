@@ -1,21 +1,41 @@
 { config, pkgs, lib, inputs, unstable, ... }:
 
 {
-  imports =
-    [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
-  # --- Boot ---
-  boot.loader.systemd-boot.enable = true;
+  # ============================================================================
+  # Boot
+  # ============================================================================
+
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 10;
+  };
+
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.configurationLimit = 10;
+
+
+  # ============================================================================
+  # Networking
+  # ============================================================================
 
   networking.hostName = "nixos";
-
-  # --- Network ---
   networking.networkmanager.enable = true;
 
-  # --- Locale ---
+  services.openvpn.servers.argentina = {
+    config = "config /etc/openvpn/argentina.ovpn";
+    autoStart = false;
+  };
+
+
+  # ============================================================================
+  # Locale
+  # ============================================================================
+
   time.timeZone = "Europe/Ljubljana";
+
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -30,12 +50,10 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # --- Services ---
 
-  services.openvpn.servers.argentina = {
-    config = "config /etc/openvpn/argentina.ovpn";
-    autoStart = false;
-  };
+  # ============================================================================
+  # Display Server & Desktop Environments
+  # ============================================================================
 
   services.xserver.enable = true;
 
@@ -48,17 +66,27 @@
 
   programs.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+
+    package =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
-  # --- Portals ---
+
+  # ============================================================================
+  # XDG Portals
+  # ============================================================================
+
   xdg.portal = {
     enable = true;
+
     extraPortals = [
       pkgs.kdePackages.xdg-desktop-portal-kde
       pkgs.xdg-desktop-portal-gtk
     ];
+
     config = {
       common.default = [ "gtk" ];
       hyprland.default = [ "hyprland" "gtk" ];
@@ -66,156 +94,269 @@
     };
   };
 
-  # --- Polkit agent for Niri ---
+
+  # ============================================================================
+  # Polkit
+  # ============================================================================
+
   security.polkit.enable = true;
+
   systemd.user.services.polkit-kde-agent = {
     description = "PolicyKit Authentication Agent (KDE)";
+
     wantedBy = [ "graphical-session.target" ];
     wants = [ "graphical-session.target" ];
     after = [ "graphical-session.target" ];
+
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+
+      ExecStart =
+        "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+
       Restart = "on-failure";
     };
   };
 
-  # --- NVIDIA Optimus (GTX 1650) ---
+
+  # ============================================================================
+  # NVIDIA Optimus (GTX 1650)
+  # ============================================================================
+
   hardware.graphics.enable = true;
+
   services.xserver.videoDrivers = [ "nvidia" ];
+
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
+
     open = false;
     nvidiaSettings = true;
+
     prime = {
       offload.enable = true;
+
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
   };
 
-  # Configure keymap in X11
+
+  # ============================================================================
+  # Keyboard
+  # ============================================================================
+
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
 
-  # --- Printing ---
+  # ============================================================================
+  # Printing
+  # ============================================================================
+
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ 
+
+    drivers = with pkgs; [
       cups-filters
       gutenprint
-      hplip   
+      hplip
     ];
   };
 
   services.ipp-usb.enable = true;
 
-  # --- Audio ---
+
+  # ============================================================================
+  # Audio & Bluetooth
+  # ============================================================================
+
   services.pulseaudio.enable = false;
+
   security.rtkit.enable = true;
+
   hardware.bluetooth.enable = true;
-  services.power-profiles-daemon.enable = true;
-  services.upower.enable = true;
+
   services.pipewire = {
     enable = true;
+
     alsa.enable = true;
     alsa.support32Bit = true;
+
     pulse.enable = true;
   };
 
-  # --- Libraries ---
+
+  # ============================================================================
+  # Power Management
+  # ============================================================================
+
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+
+
+  # ============================================================================
+  # Compatibility Libraries
+  # ============================================================================
+
   programs.nix-ld.enable = true;
+
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc.lib
     zlib
     openssl
   ];
 
-  # --- Users ---
+
+  # ============================================================================
+  # Users & Shell
+  # ============================================================================
+
   programs.fish.enable = true;
 
   users.users."bagii" = {
     isNormalUser = true;
     description = "Blagoja Vasilev";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
+
     shell = pkgs.fish;
+
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      # thunderbird
     ];
   };
 
-  # --- Unfree packages ---
-  nixpkgs.config.allowUnfree = true;
+
+  # ============================================================================
+  # Docker
+  # ============================================================================
+
   virtualisation.docker.enable = true;
 
+
+  # ============================================================================
+  # Nix
+  # ============================================================================
+
+  nixpkgs.config.allowUnfree = true;
+
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    extra-substituters = [ 
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+
+    extra-substituters = [
       "https://noctalia.cachix.org"
       "https://vicinae.cachix.org"
     ];
-    extra-trusted-public-keys = [ 
+
+    extra-trusted-public-keys = [
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
     ];
   };
 
-  # --- Fonts ---
-  
+
+  # ============================================================================
+  # Fonts
+  # ============================================================================
+
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     crimson-pro
   ];
+
   fonts.fontconfig.enable = true;
 
-  # --- Environment --- 
+
+  # ============================================================================
+  # Environment
+  # ============================================================================
 
   environment.localBinInPath = true;
+
   environment.sessionVariables.NPM_CONFIG_PREFIX = "$HOME/.npm-global";
-  environment.variables.PATH = [ "$HOME/.npm-global/bin" ];
+
+  environment.variables.PATH = [
+    "$HOME/.npm-global/bin"
+  ];
+
   environment.etc."xdg/menus/applications.menu".source =
-  "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+    "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
-  # --- Packages ---
 
-  environment.systemPackages = with pkgs; [
-	vim
-	neovim
-	wget
-	wl-clipboard
-	swappy
-	brightnessctl
-	lm_sensors
-	ddcutil
-	libqalculate
-	git
-	zed-editor
-	nodejs
-	bun
-	fastfetch
-	discord
-	qimgv
-	desktop-file-utils
-	obsidian
-        kdePackages.print-manager
-        system-config-printer
-        cups
-	playwright-mcp
-	inkscape
-  ]
-  ++ [ 
-    unstable.fetch
-  ]
-  ++ [ inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default ]
-  ++ [ inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default ]
-  ++ [ inputs.hyprmod.packages.${pkgs.stdenv.hostPlatform.system}.default ];
+  # ============================================================================
+  # System Packages
+  # ============================================================================
 
-  # --- System Version ---
+  environment.systemPackages =
+    with pkgs;
+    [
+      # Editors
+      vim
+      neovim
+      zed-editor
+
+      # CLI / Development
+      wget
+      git
+      nodejs
+      bun
+      fastfetch
+
+      # Wayland / Desktop Utilities
+      wl-clipboard
+      swappy
+      brightnessctl
+      ddcutil
+      libqalculate
+      desktop-file-utils
+
+      # System / Hardware
+      lm_sensors
+      bubblewrap
+
+      # Applications
+      discord
+      qimgv
+      obsidian
+      inkscape
+
+      # Printing
+      kdePackages.print-manager
+      system-config-printer
+      cups
+
+      # Development Tools
+      playwright-mcp
+    ]
+    ++ [
+      unstable.fetch
+    ]
+    ++ [
+      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    ]
+    ++ [
+      inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
+    ]
+    ++ [
+      inputs.hyprmod.packages.${pkgs.stdenv.hostPlatform.system}.default
+    ];
+
+
+  # ============================================================================
+  # System Version
+  # ============================================================================
 
   system.stateVersion = "26.05";
 }
