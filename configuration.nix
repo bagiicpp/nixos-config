@@ -137,7 +137,6 @@
 
   # --- Users ---
   programs.fish.enable = true;
-  programs.steam.enable = true;
 
   users.users."bagii" = {
     isNormalUser = true;
