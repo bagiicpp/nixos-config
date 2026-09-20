@@ -340,6 +340,12 @@
 
       # Development Tools
       playwright-mcp
+
+      # Screenshot
+      grim
+      slurp
+      satty
+      wl-clipboard
     ]
     ++ [
       unstable.fetch
