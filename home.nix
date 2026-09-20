@@ -549,8 +549,13 @@
 
   programs.git = {
     enable = true;
-    userName = "bagiicpp";
-    userEmail = "blagojavasilev.b@gmail.com";
+
+    settings = {
+      user = {
+        name = "bagii";
+        email = "you@example.com";
+      };
+    };
   };
 
   programs.starship = {
