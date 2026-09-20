@@ -6,6 +6,11 @@
     inputs.vicinae.homeManagerModules.default
   ];
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
