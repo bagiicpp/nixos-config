@@ -313,6 +313,7 @@
       nodejs
       bun
       fastfetch
+      yazi
 
       # Wayland / Desktop Utilities
       wl-clipboard
