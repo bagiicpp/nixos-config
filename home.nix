@@ -56,8 +56,6 @@
       };
     };
 
-    # Frostbound
-    # Custom palette based on the current wallpaper.
     theme = {
       app = {
 	overall = {
@@ -483,6 +481,52 @@
 	  }
 	];
       };
+    };
+  };
+
+  programs.hyprlock = {
+    enable = true;
+
+    settings = {
+      general = {
+	hide_cursor = true;
+      };
+
+      background = [
+	{
+	  monitor = "";
+	  path = "/path/to/your/wallpaper.png";
+	  blur_passes = 3;
+	  blur_size = 8;
+	}
+      ];
+
+      input-field = [
+	{
+	  monitor = "";
+	  size = "300, 50";
+	  position = "0, -80";
+	  halign = "center";
+	  valign = "center";
+
+	  placeholder_text = "Password...";
+	  hide_input = false;
+
+	  outline_thickness = 2;
+	  rounding = 12;
+	}
+      ];
+
+      label = [
+	{
+	  monitor = "";
+	  text = "$TIME";
+	  font_size = 64;
+	  position = "0, 120";
+	  halign = "center";
+	  valign = "center";
+	}
+      ];
     };
   };
 
