@@ -57,11 +57,6 @@
 
   services.xserver.enable = true;
 
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-
   programs.hyprland = {
     enable = true;
 
@@ -72,6 +67,9 @@
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
+  services.displayManager.noctalia-greeter = {
+    enable = true;
+  };
 
   # ============================================================================
   # XDG Portals
