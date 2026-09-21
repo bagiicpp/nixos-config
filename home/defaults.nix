@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   home.sessionVariables = {
@@ -6,6 +6,15 @@
     VISUAL = "nvim";
     USE_LAYER_SHELL = "1";
     UV_PYTHON_DOWNLOADS = "never";
+  };
+
+  home.pointerCursor = {
+    package = pkgs.apple-cursor;
+    name = "macOS";
+    size = 24;
+
+    gtk.enable = true;
+    x11.enable = true;
   };
 
   xdg.mimeApps = {
