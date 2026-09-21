@@ -206,6 +206,14 @@
     stdenv.cc.cc.lib
     zlib
     openssl
+
+    # Playwright's prebuilt Chromium (FHS binary) needs these
+    glib nss nspr atk at-spi2-core cups dbus expat
+    libdrm libgbm libGL libxkbcommon
+    pango cairo fontconfig freetype
+    alsa-lib systemdLibs
+    xorg.libX11 xorg.libxcb xorg.libXcomposite xorg.libXdamage
+    xorg.libXext xorg.libXfixes xorg.libXrandr
   ];
 
 
@@ -344,15 +352,7 @@
       slurp
       satty
       wl-clipboard
-
-      # Playwright's prebuilt Chromium (FHS binary) needs these
-      glib nss nspr atk at-spi2-core cups dbus expat
-      libdrm libgbm libGL libxkbcommon
-      pango cairo fontconfig freetype
-      alsa-lib systemdLibs
-      xorg.libX11 xorg.libxcb xorg.libXcomposite xorg.libXdamage
-      xorg.libXext xorg.libXfixes xorg.libXrandr
-    ]
+   ]
     ++ [
       unstable.fetch
     ]
