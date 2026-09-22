@@ -335,6 +335,7 @@
       bun
       fastfetch
       yazi
+      gh
 
       # Wayland / Desktop Utilities
       wl-clipboard
