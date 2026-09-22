@@ -70,8 +70,24 @@
 
   services.displayManager.noctalia-greeter = {
     enable = true;
-  };
 
+    settings = {
+      appearance = {
+        scheme = "Synced";
+
+        hide_logo = true;
+        scheme_selector_position = "hidden";
+        power_buttons_position = "bottom-right";
+
+        password_style = "default";
+        corner_radius_scale = 1.25;
+      };
+
+      idle = {
+        timeout = 300;
+      };
+    };
+  };
   # ============================================================================
   # XDG Portals
   # ============================================================================
