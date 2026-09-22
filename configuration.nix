@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    inputs.noctalia-greeter.nixosModules.default
   ];
 
   # ============================================================================
