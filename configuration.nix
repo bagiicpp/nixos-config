@@ -227,8 +227,8 @@
     libdrm libgbm libGL libxkbcommon
     pango cairo fontconfig freetype
     alsa-lib systemdLibs
-    xorg.libX11 xorg.libxcb xorg.libXcomposite xorg.libXdamage
-    xorg.libXext xorg.libXfixes xorg.libXrandr
+    libX11 libxcb libXcomposite libXdamage
+    libXext libXfixes libXrandr
   ];
 
 
