@@ -22,7 +22,7 @@ in
         font = "JetBrains Mono 11";
 
         background-color = mkLiteral "transparent";
-        text-color = mkLiteral "#6C6C6D";
+        text-color = mkLiteral "#969A8F";
 
         margin = 0;
         padding = 0;
@@ -37,16 +37,16 @@ in
         border-radius = mkLiteral "12px";
         border = 0;
 
-        background-color = mkLiteral "#0D0B0A";
+        background-color = mkLiteral "#20292D";
       };
 
       mainbox = {
         padding = mkLiteral "8px";
-        background-color = mkLiteral "#0D0B0A";
+        background-color = mkLiteral "#20292D";
       };
 
       inputbar = {
-        background-color = mkLiteral "#14110E";
+        background-color = mkLiteral "#31393B";
 
         border-radius = mkLiteral "6px";
         border = 0;
@@ -56,21 +56,21 @@ in
       };
 
       prompt = {
-        text-color = mkLiteral "#B0B0B2";
+        text-color = mkLiteral "#C9C0A7";
         background-color = mkLiteral "transparent";
       };
 
       entry = {
-        text-color = mkLiteral "#6C6C6D";
+        text-color = mkLiteral "#969A8F";
 
         placeholder = "search";
-        placeholder-color = mkLiteral "#6C6C6D";
+        placeholder-color = mkLiteral "#626964";
 
         background-color = mkLiteral "transparent";
       };
 
       listview = {
-        background-color = mkLiteral "#0D0B0A";
+        background-color = mkLiteral "#20292D";
 
         margin = mkLiteral "8px 0px 0px";
 
@@ -87,38 +87,38 @@ in
       };
 
       "element normal.normal" = {
-        background-color = mkLiteral "#0D0B0A";
-        text-color = mkLiteral "#6C6C6D";
+        background-color = mkLiteral "#20292D";
+        text-color = mkLiteral "#969A8F";
       };
 
       "element alternate.normal" = {
-        background-color = mkLiteral "#0D0B0A";
-        text-color = mkLiteral "#6C6C6D";
+        background-color = mkLiteral "#20292D";
+        text-color = mkLiteral "#969A8F";
       };
 
       "element normal.urgent" = {
-        background-color = mkLiteral "#2E2A27";
-        text-color = mkLiteral "#B0B0B2";
+        background-color = mkLiteral "#404847";
+        text-color = mkLiteral "#C9C0A7";
       };
 
       "element normal.active" = {
-        background-color = mkLiteral "#0D0B0A";
-        text-color = mkLiteral "#6C6C6D";
+        background-color = mkLiteral "#20292D";
+        text-color = mkLiteral "#969A8F";
       };
 
       "element selected.normal" = {
-        background-color = mkLiteral "#14110E";
-        text-color = mkLiteral "#B0B0B2";
+        background-color = mkLiteral "#31393B";
+        text-color = mkLiteral "#C9C0A7";
       };
 
       "element selected.active" = {
-        background-color = mkLiteral "#14110E";
-        text-color = mkLiteral "#B0B0B2";
+        background-color = mkLiteral "#31393B";
+        text-color = mkLiteral "#C9C0A7";
       };
 
       "element selected.urgent" = {
-        background-color = mkLiteral "#2E2A27";
-        text-color = mkLiteral "#B0B0B2";
+        background-color = mkLiteral "#404847";
+        text-color = mkLiteral "#C9C0A7";
       };
 
       element-icon = {
@@ -139,12 +139,12 @@ in
         border-radius = mkLiteral "8px";
         border = 0;
 
-        background-color = mkLiteral "#0D0B0A";
+        background-color = mkLiteral "#20292D";
       };
 
       textbox = {
         padding = mkLiteral "8px 16px";
-        background-color = mkLiteral "#0D0B0A";
+        background-color = mkLiteral "#20292D";
       };
     };
   };
