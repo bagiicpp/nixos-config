@@ -69,7 +69,7 @@
 
         {
           type = "os";
-          key = "󰣇 OS";
+          key = "󱄅 OS";
         }
 
         {
