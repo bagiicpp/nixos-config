@@ -70,52 +70,52 @@
         }
 
         # Suspend
-        {
-          monitor = "";
-          text = "󰤄";
+	{
+	  monitor = "";
+	  text = "<span>󰤄 </span>";
 
-          color = "rgba(201, 192, 167, 0.70)";
-          font_size = 42;
-          font_family = "JetBrainsMono Nerd Font";
+	  color = "rgba(201, 192, 167, 0.70)";
+	  font_size = 42;
+	  font_family = "JetBrainsMono Nerd Font";
 
-          onclick = "systemctl suspend";
+	  onclick = "systemctl suspend";
 
-          position = "-120, 80";
-          halign = "center";
-          valign = "bottom";
-        }
+	  position = "-120, 80";
+	  halign = "center";
+	  valign = "bottom";
+	}
 
-        # Reboot
-        {
-          monitor = "";
-          text = "󰜉";
+	# Reboot
+	{
+	  monitor = "";
+	  text = "<span>󰜉 </span>";
 
-          color = "rgba(201, 192, 167, 0.70)";
-          font_size = 42;
-          font_family = "JetBrainsMono Nerd Font";
+	  color = "rgba(201, 192, 167, 0.70)";
+	  font_size = 42;
+	  font_family = "JetBrainsMono Nerd Font";
 
-          onclick = "reboot";
+	  onclick = "reboot";
 
-          position = "0, 80";
-          halign = "center";
-          valign = "bottom";
-        }
+	  position = "0, 80";
+	  halign = "center";
+	  valign = "bottom";
+	}
 
-        # Power off
-        {
-          monitor = "";
-          text = "󰐥";
+	# Power off
+	{
+	  monitor = "";
+	  text = "<span>󰐥 </span>";
 
-          color = "rgba(201, 192, 167, 0.70)";
-          font_size = 42;
-          font_family = "JetBrainsMono Nerd Font";
+	  color = "rgba(201, 192, 167, 0.70)";
+	  font_size = 42;
+	  font_family = "JetBrainsMono Nerd Font";
 
-          onclick = "poweroff";
+	  onclick = "poweroff";
 
-          position = "120, 80";
-          halign = "center";
-          valign = "bottom";
-        }
+	  position = "120, 80";
+	  halign = "center";
+	  valign = "bottom";
+	}
       ];
 
       shape = [
