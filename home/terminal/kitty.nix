@@ -15,7 +15,7 @@
       background_blur = "1";
 
       window_padding_width = "5 10";
-      placement_strategy = "center";
+      placement_strategy = "top-left";
 
       hide_window_decorations = "yes";
 

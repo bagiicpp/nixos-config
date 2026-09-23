@@ -1,113 +1,150 @@
-{ ... }:
+{ config, ... }:
 
+let
+  inherit (config.lib.formats.rasi) mkLiteral;
+in
 {
   programs.rofi = {
     enable = true;
 
     extraConfig = {
-      modi = "drun,run";
+      modes = "drun";
       show-icons = true;
-      display-drun = "Apps";
-      display-run = "Run";
-      drun-display-format = "{name}";
+
+      matching = "regex";
+      drun-match-fields = "name";
+
+      display-drun = "Launch:";
     };
 
     theme = {
       "*" = {
-        font = "JetBrainsMono Nerd Font 12";
+        font = "JetBrains Mono 11";
 
-        background = "#20292ddd";
-        background-alt = "#354043cc";
+        background-color = mkLiteral "transparent";
+        text-color = mkLiteral "#6C6C6D";
 
-        foreground = "#c9c0a7";
-        muted = "#969a8f";
-
-        selected = "#b8cdcb";
-        selected-foreground = "#20292d";
-
-        border = "#809b9b";
+        margin = 0;
+        padding = 0;
+        spacing = 0;
       };
 
       window = {
-        width = "38%";
-        border = 1;
-        border-color = "@border";
-        border-radius = 22;
+        location = mkLiteral "center";
+        width = 500;
+        y-offset = -20;
 
-        background-color = "@background";
+        border-radius = mkLiteral "12px";
+        border = 0;
 
-        padding = 14;
+        background-color = mkLiteral "#0D0B0A";
       };
 
       mainbox = {
-        spacing = 12;
-        padding = 8;
-
-        background-color = "transparent";
+        padding = mkLiteral "8px";
+        background-color = mkLiteral "#0D0B0A";
       };
 
       inputbar = {
-        spacing = 10;
-        padding = 14;
+        background-color = mkLiteral "#14110E";
 
-        border-radius = 16;
+        border-radius = mkLiteral "6px";
+        border = 0;
 
-        background-color = "#ffffff10";
-        text-color = "@foreground";
-
-        children = [
-          "prompt"
-          "entry"
-        ];
+        padding = mkLiteral "8px 12px";
+        spacing = mkLiteral "8px";
       };
 
       prompt = {
-        text-color = "@muted";
+        text-color = mkLiteral "#B0B0B2";
+        background-color = mkLiteral "transparent";
       };
 
       entry = {
-        placeholder = "Search applications...";
-        placeholder-color = "@muted";
+        text-color = mkLiteral "#6C6C6D";
 
-        text-color = "@foreground";
+        placeholder = "search";
+        placeholder-color = mkLiteral "#6C6C6D";
+
+        background-color = mkLiteral "transparent";
       };
 
       listview = {
-        lines = 7;
+        background-color = mkLiteral "#0D0B0A";
+
+        margin = mkLiteral "8px 0px 0px";
+
         columns = 1;
-
-        spacing = 6;
-        padding = 4;
-
-        scrollbar = false;
-
-        background-color = "transparent";
+        lines = 6;
+        fixed-height = false;
       };
 
       element = {
-        padding = 10;
-        spacing = 12;
+        padding = mkLiteral "8px 10px";
+        spacing = mkLiteral "6px";
 
-        border-radius = 14;
-
-        background-color = "transparent";
-        text-color = "@foreground";
+        border-radius = mkLiteral "6px";
       };
 
-      "element selected" = {
-        background-color = "@selected";
-        text-color = "@selected-foreground";
+      "element normal.normal" = {
+        background-color = mkLiteral "#0D0B0A";
+        text-color = mkLiteral "#6C6C6D";
+      };
+
+      "element alternate.normal" = {
+        background-color = mkLiteral "#0D0B0A";
+        text-color = mkLiteral "#6C6C6D";
+      };
+
+      "element normal.urgent" = {
+        background-color = mkLiteral "#2E2A27";
+        text-color = mkLiteral "#B0B0B2";
+      };
+
+      "element normal.active" = {
+        background-color = mkLiteral "#0D0B0A";
+        text-color = mkLiteral "#6C6C6D";
+      };
+
+      "element selected.normal" = {
+        background-color = mkLiteral "#14110E";
+        text-color = mkLiteral "#B0B0B2";
+      };
+
+      "element selected.active" = {
+        background-color = mkLiteral "#14110E";
+        text-color = mkLiteral "#B0B0B2";
+      };
+
+      "element selected.urgent" = {
+        background-color = mkLiteral "#2E2A27";
+        text-color = mkLiteral "#B0B0B2";
       };
 
       element-icon = {
-        size = 24;
-        background-color = "transparent";
+        size = mkLiteral "1em";
+        vertical-align = mkLiteral "0.5";
+
+        background-color = mkLiteral "transparent";
       };
 
       element-text = {
-        vertical-align = "0.5";
-        background-color = "transparent";
-        text-color = "inherit";
+        text-color = mkLiteral "inherit";
+        background-color = mkLiteral "transparent";
+      };
+
+      message = {
+        margin = mkLiteral "8px 0px 0px";
+
+        border-radius = mkLiteral "8px";
+        border = 0;
+
+        background-color = mkLiteral "#0D0B0A";
+      };
+
+      textbox = {
+        padding = mkLiteral "8px 16px";
+        background-color = mkLiteral "#0D0B0A";
       };
     };
   };

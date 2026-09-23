@@ -40,7 +40,7 @@
 
       modules = [
         "title"
-	"seperator"
+	"separator"
 
         {
           type = "cpu";
