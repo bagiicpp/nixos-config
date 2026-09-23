@@ -5,20 +5,37 @@
     enable = true;
 
     settings = {
-      "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
-
       logo = {
-        type = "builtin";
-        source = "nixos_small";
+        type = "file";
+        source = ./luffy.txt;
+
+        color = {
+          "1" = "white";
+        };
 
         padding = {
           left = 1;
-          right = 3;
+          right = 4;
         };
       };
 
       display = {
-        separator = "  ";
+        separator = " ";
+
+        color = {
+          keys = "white";
+          title = "white";
+          output = "white";
+        };
+
+        percent = {
+          type = [ "num" ];
+          color = {
+            green = "white";
+            yellow = "white";
+            red = "white";
+          };
+        };
       };
 
       modules = [
@@ -26,59 +43,73 @@
         "separator"
 
         {
-          type = "os";
-          key = "󱄅 OS";
+          type = "cpu";
+          key = " CPU";
         }
+
         {
-          type = "host";
-          key = "󰌢 Host";
+          type = "gpu";
+          key = "󰢮 GPU";
+          hideType = "integrated";
         }
+
+        {
+          type = "memory";
+          key = " RAM";
+          format = "{percentage}";
+        }
+
+        {
+          type = "disk";
+          key = " Disk";
+          format = "{size-percentage}";
+        }
+
+        "break"
+
+        {
+          type = "os";
+          key = "󰣇 OS";
+        }
+
         {
           type = "kernel";
           key = " Kernel";
         }
-        {
-          type = "uptime";
-          key = "󰅐 Uptime";
-        }
-        {
-          type = "packages";
-          key = "󰏖 Packages";
-        }
+
         {
           type = "shell";
           key = " Shell";
         }
+
         {
           type = "wm";
           key = " WM";
         }
+
+        "break"
+
         {
-          type = "terminal";
-          key = " Terminal";
+          type = "localip";
+          key = "󰩟 Local IP";
+        }
+
+        {
+          type = "packages";
+          key = "󰏖 Packages";
+        }
+
+        {
+          type = "uptime";
+          key = "󰅐 Uptime";
         }
 
         "break"
 
         {
-          type = "cpu";
-          key = " CPU";
+          type = "colors";
+          symbol = "circle";
         }
-        {
-          type = "gpu";
-          key = "󰢮 GPU";
-        }
-        {
-          type = "memory";
-          key = " Memory";
-        }
-        {
-          type = "disk";
-          key = " Disk";
-        }
-
-        "break"
-        "colors"
       ];
     };
   };
