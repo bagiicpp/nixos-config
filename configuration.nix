@@ -73,21 +73,60 @@
 
     settings = {
       appearance = {
-        scheme = "Synced";
+	scheme = "Synced";
+	theme_mode = "dark";
 
-        hide_logo = true;
-        scheme_selector_position = "hidden";
-        power_buttons_position = "bottom-right";
+	hide_logo = true;
+	scheme_selector_position = "hidden";
+	power_buttons_position = "bottom-right";
 
-        password_style = "default";
-        corner_radius_scale = 1.25;
+	password_style = "default";
+	corner_radius_scale = 1.25;
+
+	font_family = "JetBrainsMono Nerd Font";
+
+	wallpaper = {
+	  path = "/var/lib/noctalia-greeter/wallpaper.webp";
+	  fill_mode = "crop";
+	};
+
+	palette = {
+	  primary = "#C9C0A7";
+	  on_primary = "#31393B";
+
+	  secondary = "#C9C0A7";
+	  on_secondary = "#31393B";
+
+	  tertiary = "#969A8F";
+	  on_tertiary = "#31393B";
+
+	  error = "#D98C8C";
+	  on_error = "#31393B";
+
+	  surface = "#31393B";
+	  on_surface = "#C9C0A7";
+
+	  surface_variant = "#394244";
+	  on_surface_variant = "#969A8F";
+
+	  outline = "#969A8F";
+	  shadow = "#000000";
+
+	  hover = "#C9C0A7";
+	  on_hover = "#31393B";
+	};
       };
 
       idle = {
-        timeout = 300;
+	timeout = 300;
+      };
+
+      cursor = {
+	size = 24;
       };
     };
   };
+
   # ============================================================================
   # XDG Portals
   # ============================================================================
