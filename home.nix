@@ -8,7 +8,6 @@
     ./home/defaults.nix
 
     ./home/desktop/hyprlock.nix
-    ./home/desktop/rofi.nix
     ./home/desktop/noctalia.nix
     ./home/desktop/vicinae.nix
 
