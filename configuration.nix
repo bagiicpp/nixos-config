@@ -386,6 +386,8 @@
       # System / Hardware
       lm_sensors
       bubblewrap
+      mpv
+      file
 
       # Applications
       discord
