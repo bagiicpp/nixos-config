@@ -232,18 +232,60 @@
       }
 
 
-      /* ------------------------------------------------------------
-         Status bar
-         ------------------------------------------------------------ */
+  /* ------------------------------------------------------------
+    Bottom status / control bar
+  ------------------------------------------------------------ */
 
-      .nemo-window statusbar {
-        background-color: rgba(37, 46, 49, 0.72);
+      .nemo-window statusbar,
+      .nemo-window statusbar > *,
+      .nemo-window statusbar box,
+      .nemo-window statusbar frame,
+      .nemo-window statusbar button,
+      .nemo-window statusbar scale {
+	background-color: transparent;
+	background-image: none;
 
-        color: @nemo_muted;
-
-        border-top: 1px solid @nemo_border;
+	box-shadow: none;
+	border-color: transparent;
       }
 
+      /* One continuous glass surface */
+      .nemo-window statusbar {
+	background-color: rgba(37, 46, 49, 0.72);
+
+	color: @nemo_muted;
+
+	border-top: 1px solid @nemo_border;
+      }
+
+      /* Bottom-left buttons */
+      .nemo-window statusbar button {
+	border-radius: 7px;
+
+	color: @nemo_muted;
+      }
+
+      .nemo-window statusbar button:hover {
+	background-color: rgba(201, 192, 167, 0.08);
+	color: @nemo_text_bright;
+      }
+
+      /* Zoom slider */
+      .nemo-window statusbar scale trough {
+	background-color: rgba(32, 41, 45, 0.42);
+
+	border: none;
+	border-radius: 999px;
+      }
+
+      .nemo-window statusbar scale slider {
+	background-color: @nemo_text;
+
+	border: none;
+	border-radius: 999px;
+
+	box-shadow: none;
+      }
 
       /* ------------------------------------------------------------
          Scrollbars
