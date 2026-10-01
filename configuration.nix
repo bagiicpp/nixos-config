@@ -380,6 +380,7 @@
       fastfetch
       yazi
       gh
+      glib
 
       # Wayland / Desktop Utilities
       wl-clipboard
