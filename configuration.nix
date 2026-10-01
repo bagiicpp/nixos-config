@@ -390,6 +390,7 @@
       bubblewrap
       mpv
       file
+      nemo
 
       # Applications
       discord
