@@ -1,10 +1,6 @@
 { pkgs, ... }:
 
 {
-  home.packages = [
-    pkgs.nemo
-  ];
-
   gtk = {
     enable = true;
 
@@ -16,6 +12,15 @@
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
+    };
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+
+    defaultApplications = {
+      "inode/directory" = [ "nemo.desktop" ];
+      "application/x-gnome-saved-search" = [ "nemo.desktop" ];
     };
   };
 }
