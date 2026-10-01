@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  home.packages = [
+    pkgs.nemo
+  ];
+
   gtk = {
     enable = true;
 
