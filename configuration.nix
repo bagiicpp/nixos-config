@@ -396,8 +396,6 @@
       mpv
       file
       nemo
-      papirus-icon-theme
-      adw-gtk3
 
       # Applications
       discord
