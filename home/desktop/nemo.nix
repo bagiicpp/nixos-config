@@ -330,18 +330,11 @@
 
   dconf.settings = {
     "org/nemo/window-state" = {
-      # The old File/Edit/View/etc. bar is the biggest visual giveaway
-      # that Nemo is an older GTK application.
       "start-with-menu-bar" = false;
-
       "start-with-toolbar" = true;
       "start-with-location-bar" = true;
       "start-with-sidebar" = true;
-
-      # Keep this for now. We can remove it later if you want an even
-      # cleaner look.
-      "start-with-status-bar" = true;
-
+      "start-with-status-bar" = false;
       "sidebar-width" = 190;
     };
   };
