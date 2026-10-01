@@ -10,6 +10,7 @@
     ./home/desktop/hyprlock.nix
     ./home/desktop/noctalia.nix
     ./home/desktop/vicinae.nix
+    ./home/desktop/nemo.nix
 
     ./home/terminal/kitty.nix
     ./home/terminal/fish.nix
