@@ -17,5 +17,11 @@
         };
       };
     };
+
+    systemd.user.services.vicinae.Unit = {
+      X-Restart-Triggers = [
+	config.home.path
+      ];
+    };
   };
 }
