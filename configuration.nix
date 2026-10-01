@@ -56,6 +56,7 @@
   # ============================================================================
 
   services.xserver.enable = true;
+  services.gvfs.enable = true;
 
   programs.steam.enable = true;
 
@@ -131,6 +132,8 @@
   # ============================================================================
   # XDG Portals
   # ============================================================================
+  
+  xdg.icons.enable = true;
 
   xdg.portal = {
     enable = true;
@@ -256,6 +259,7 @@
   # ============================================================================
 
   programs.nix-ld.enable = true;
+  programs.dconf.enable = true;
 
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc.lib
@@ -391,6 +395,8 @@
       mpv
       file
       nemo
+      papirus-icon-theme
+      adw-gtk3
 
       # Applications
       discord
