@@ -23,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    helium = {
+      url = "github:oxcl/nix-flake-helium-browser";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland.url = "github:hyprwm/Hyprland";
     vicinae.url = "github:vicinaehq/vicinae";
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
@@ -39,6 +44,7 @@
         ./configuration.nix
         hyprland.nixosModules.default
         home-manager.nixosModules.home-manager
+	inputs.helium.nixosModules.default
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

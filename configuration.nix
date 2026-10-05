@@ -59,7 +59,7 @@
   services.gvfs.enable = true;
 
   programs.steam.enable = true;
-
+  programs.helium.enable = true;
   programs.hyprland = {
     enable = true;
 
