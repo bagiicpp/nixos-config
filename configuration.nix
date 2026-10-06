@@ -381,6 +381,15 @@
       yazi
       gh
       glib
+      jq
+      lazygit
+      ripgrep
+      fzf
+      zoxide
+      btop
+      cava
+      eza
+      delta
 
       # Wayland / Desktop Utilities
       wl-clipboard
