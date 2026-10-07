@@ -371,6 +371,7 @@
       vim
       neovim
       zed-editor
+      libreoffice
 
       # CLI / Development
       wget
