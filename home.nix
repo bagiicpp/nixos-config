@@ -17,7 +17,6 @@
     ./home/terminal/starship.nix
     ./home/terminal/fastfetch.nix
 
-    ./home/tools/yazi.nix
     ./home/tools/git.nix
   ];
 
